@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by ACfan on 29/09/2016.
@@ -12,20 +13,26 @@ public class STGame {
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
+        deck = new STDeck();
     }
 
     public void selectDealer() {
         //todo make random int
+        dealerId = new Random().nextInt(numPlayers + 1);
 
-        dealerId = 1;
+//        dealerId = 1;
     }
 
     public void dealCards() {
         players = new STPlayer[numPlayers];
+        for (int i = 0; i <numPlayers; ++i){
+            players[i] = new STPlayer("Player" + i);
+
+        }
 
         for(STPlayer player : players){
-            ArrayList<STCard>  card = deck.dealCards(NUM_CARDS_TO_DEAL);
-            player.setCards();
+            ArrayList<STCard>  cards = deck.dealCards(NUM_CARDS_TO_DEAL);
+            player.setCards(cards);
         }
     }
 }

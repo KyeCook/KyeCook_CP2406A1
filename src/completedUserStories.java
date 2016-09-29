@@ -3,6 +3,8 @@
  *
  * Github URL : https://github.com/KyeCook/KyeCook_CP2406A1
  */
+
+//TODO : Min 16 of vid
 public class completedUserStories {
 
     private static final int NEW_GAME = 1;
