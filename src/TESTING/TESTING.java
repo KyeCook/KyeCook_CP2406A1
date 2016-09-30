@@ -6,6 +6,28 @@ import java.util.*;
  * Created by ACfan on 29/09/2016.
  */
 public class TESTING {
+    MenuOption option;
+
+    public TESTING(MenuOption option){
+        this.option = option;
+    }
+
+    public enum MenuOption {
+        NEW_GAME, END_GAME
+    }
+
+    public void menuSelectedOption(){
+        switch (option) {
+            case NEW_GAME:
+                System.out.println("New Game started");
+                break;
+            case END_GAME:
+                System.out.println("Game is ending");
+                break;
+        }
+    }
+
+
     public static void main(String[]args){
         String str;
 
@@ -20,11 +42,13 @@ public class TESTING {
         str = in.nextLine();
 
         if(str.charAt(0) == 'p'){
-            System.out.println("Game has been started");
+            TESTING newGame = new TESTING(MenuOption.NEW_GAME);
+            newGame.menuSelectedOption();
         }
 
         else if(str.charAt(0) == 'q'){
-            System.out.println("Game has been quit");
+            TESTING endGame = new TESTING(MenuOption.END_GAME);
+            endGame.menuSelectedOption();
         }
 
         else {
@@ -33,7 +57,11 @@ public class TESTING {
 
 
 //        System.out.println(str);
-    }
 
+
+
+
+
+    }
 
 }
