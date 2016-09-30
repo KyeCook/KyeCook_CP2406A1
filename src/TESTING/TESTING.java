@@ -27,8 +27,15 @@ public class TESTING {
         }
     }
 
+    public static void userInputs(){
+        System.out.printf("alalalalalalal");
+    }
+
 
     public static void main(String[]args){
+
+        userInputs();
+
         String str;
 
 //        int i = new Random().nextInt(2 + 1);

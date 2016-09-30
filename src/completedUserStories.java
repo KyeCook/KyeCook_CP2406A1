@@ -7,7 +7,7 @@ import java.util.*;
  */
 
 public class completedUserStories {
-
+    MenuOption option;
     private static final int NEW_GAME = 1;
 
     public static void main(String[]args)
@@ -15,17 +15,39 @@ public class completedUserStories {
         showWelcome();
         showMenu();
 
-        int opt = getUserMenuChoice();
-        STGame game;
-        if(opt == NEW_GAME) {
-           game = startNewGame();
-            game.playGame();
-        }
+
+//        int userOption = getUserMenuChoice();
+//        STGame game;
+//        if(userOption == NEW_GAME) {
+//           game = startNewGame();
+//            game.playGame();
+//        }
+
+        getUserMenuChoice();
     }
 
-    public enum Option {
+    public completedUserStories(MenuOption option){
+        this.option = option;
+    }
+
+    private enum MenuOption {
         //todo: research how to use enumerated code
-        NEW_GAME
+        NEW_GAME, END_GAME
+    }
+
+    public void selectedMenuOption(){
+        switch(option) {
+
+            case NEW_GAME:
+                STGame game;
+                game = startNewGame();
+                game.playGame();
+                break;
+
+            case END_GAME:
+                System.out.println("END_GAME");
+                break;
+        }
     }
 
     private static STGame startNewGame(){
@@ -46,15 +68,32 @@ public class completedUserStories {
         // TODO: 29/09/2016 : see prac
         return 2;
     }
-    private static int getUserMenuChoice() {
-        //todo: see prac
+    private static void getUserMenuChoice() {
+        int userInput;
 
-        return 1;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please Enter Menu Choice:\n\n");
+        userInput = in.nextInt();
+
+        if(userInput == 1){
+            completedUserStories newGame = new completedUserStories(MenuOption.NEW_GAME);
+            newGame.selectedMenuOption();
+        }
+
+        else if(userInput == 2){
+            completedUserStories endGame = new completedUserStories(MenuOption.END_GAME);
+            endGame.selectedMenuOption();
+        }
+
+        else {
+            System.out.println("Incorrect input");
+        }
+
     }
 
     private static void showMenu() {
-        System.out.println("\t1. Start Game");
-        System.out.println("\t2. Exit");
+        System.out.println("\t[1] Start Game");
+        System.out.println("\t[2] Exit");
     }
 
     private static void showWelcome() {
