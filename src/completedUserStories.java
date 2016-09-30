@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -7,35 +8,24 @@ import java.util.*;
  */
 
 public class completedUserStories {
-    MenuOption option;
-    private static final int NEW_GAME = 1;
+    private MenuOption option;
 
     public static void main(String[]args)
     {
         showWelcome();
         showMenu();
-
-
-//        int userOption = getUserMenuChoice();
-//        STGame game;
-//        if(userOption == NEW_GAME) {
-//           game = startNewGame();
-//            game.playGame();
-//        }
-
         getUserMenuChoice();
     }
 
-    public completedUserStories(MenuOption option){
+    private completedUserStories(MenuOption option){
         this.option = option;
     }
 
     private enum MenuOption {
-        //todo: research how to use enumerated code
         NEW_GAME, END_GAME
     }
 
-    public void selectedMenuOption(){
+    private void selectedMenuOption(){
         switch(option) {
 
             case NEW_GAME:
@@ -45,7 +35,7 @@ public class completedUserStories {
                 break;
 
             case END_GAME:
-                System.out.println("END_GAME");
+                System.out.println("Thank you for playing Mineral SuperTrumps!!");
                 break;
         }
     }
@@ -65,15 +55,29 @@ public class completedUserStories {
 
     }
     private static int getNumPlayers() {
-        // TODO: 29/09/2016 : see prac
-        return 2;
+        //todo Do try statement or another error checking method to stop user entering in string value
+
+        int numberOfPlayers = 0;
+
+        Scanner noPlayers = new Scanner(System.in);
+        while(numberOfPlayers<2 || numberOfPlayers >5){
+            System.out.println("Please enter in desired number of players (2-5)");
+            numberOfPlayers = noPlayers.nextInt();
+        }
+
+        return numberOfPlayers;
     }
     private static void getUserMenuChoice() {
-        int userInput;
+        //todo Do try statement or another error checking method to stop user entering in string value
+        int userInput = 0;
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Please Enter Menu Choice:\n\n");
-        userInput = in.nextInt();
+        Scanner userIn = new Scanner(System.in);
+
+
+        while(userInput < 1 || userInput > 2){
+            System.out.println("\nPlease Enter Valid Menu Choice:\n");
+            userInput = userIn.nextInt();
+        }
 
         if(userInput == 1){
             completedUserStories newGame = new completedUserStories(MenuOption.NEW_GAME);
@@ -83,10 +87,6 @@ public class completedUserStories {
         else if(userInput == 2){
             completedUserStories endGame = new completedUserStories(MenuOption.END_GAME);
             endGame.selectedMenuOption();
-        }
-
-        else {
-            System.out.println("Incorrect input");
         }
 
     }
