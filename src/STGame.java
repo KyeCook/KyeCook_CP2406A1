@@ -10,6 +10,7 @@ public class STGame {
     private int dealerId;
     private STPlayer[] players;
     private STDeck deck;
+    private int humanPlayerId;
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
@@ -21,6 +22,31 @@ public class STGame {
         dealerId = new Random().nextInt(numPlayers + 1);
 
 //        dealerId = 1;
+    }
+
+    public void selectHumanPlayer(){
+        humanPlayerId = 0;
+    }
+
+    public STPlayer getHumanPlayer(){
+        return players[humanPlayerId];
+    }
+
+    public void playGame() {
+        boolean gameIsActive = true;
+        while (gameIsActive){
+
+            //todo setup players in correct order
+
+            for(int indexPlayer = 0; indexPlayer < players.length; indexPlayer ++) {
+
+                //todo check human player (polymorphism)
+
+
+            }
+
+//            showPlayerTurn();
+        }
     }
 
     public void dealCards() {

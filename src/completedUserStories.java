@@ -15,8 +15,10 @@ public class completedUserStories {
         showMenu();
 
         int opt = getUserMenuChoice();
+        STGame game;
         if(opt == NEW_GAME) {
-           startNewGame();
+           game = startNewGame();
+            game.playGame();
         }
     }
 
@@ -25,12 +27,18 @@ public class completedUserStories {
         NEW_GAME
     }
 
-    private static void startNewGame(){
+    private static STGame startNewGame(){
         int numPlayers = getNumPlayers();
         STGame game = new STGame(numPlayers);
         game.selectDealer();
         game.dealCards();
+        game.selectHumanPlayer();
+
+        STPlayer humanPlayer = game.getHumanPlayer();
+        showPlayer(humanPlayer);
 //        dealCards();
+
+        return game;
 
     }
     private static int getNumPlayers() {
@@ -50,5 +58,9 @@ public class completedUserStories {
 
     private static void showWelcome() {
         System.out.println("Welcome to Mineral Supertrumps!");
+    }
+
+    private static void showPlayer(STPlayer humanPlayer){
+        System.out.println("Human Players" + humanPlayer);
     }
 }
