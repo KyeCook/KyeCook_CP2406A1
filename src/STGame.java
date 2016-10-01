@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by ACfan on 29/09/2016.
@@ -18,10 +17,7 @@ public class STGame {
     }
 
     public void selectDealer() {
-        //todo make random int
         dealerId = new Random().nextInt(numPlayers + 1);
-
-//        dealerId = 1;
     }
 
     public void selectHumanPlayer(){
