@@ -30,18 +30,27 @@ public class STGame {
 
     public void playGame() {
         boolean gameIsActive = true;
-        while (gameIsActive){
+        //todo: index part of array or list? Should players be enumerated?
+        // below maybe the solution?
+        boolean humanTurn = false;
 
+        while (gameIsActive){
             //todo setup players in correct order
 
             for(int indexPlayer = 0; indexPlayer < players.length; indexPlayer ++) {
-
                 //todo check human player (polymorphism)
-
+                if(indexPlayer == humanPlayerId){
+                    System.out.println("THIS IS A HUMAN");
+//                    showPlayerTurn();
+                }
+                else{
+                    System.out.println("This is a bot");
+//                    showBotTurn;
+                }
 
             }
+            gameIsActive = false;
 
-//            showPlayerTurn();
         }
     }
 
