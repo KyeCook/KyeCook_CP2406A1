@@ -30,9 +30,4 @@ public class STDeck {
         }
         return result;
     }
-
-    public void addToDeck(STCard c){
-        cards.add(c);
-
-    }
 }

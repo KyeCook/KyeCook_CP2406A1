@@ -103,9 +103,10 @@ public class STGame {
 
             }
             else {
-                System.out.println("Card is played");
+                System.out.println(players[humanPlayerId].playerDeck().get(selectedOption - 1) + " Card is played");
+                players[humanPlayerId].playerDeck().remove(selectedOption - 1);
 
-                System.out.println(players[humanPlayerId].playerDeck().get(selectedOption - 1));
+                System.out.println(players[humanPlayerId].playerDeck());
 
             }
 
