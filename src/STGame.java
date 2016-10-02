@@ -11,6 +11,8 @@ public class STGame {
     private STDeck deck;
     private int humanPlayerId;
 
+    private int[] botPlayerIds;
+
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
         deck = new STDeck();
@@ -27,6 +29,29 @@ public class STGame {
     public STPlayer getHumanPlayer(){
         return players[humanPlayerId];
     }
+
+
+    public void selectBotPlayers(){
+//        botPlayerIds = new int[]{1,2,3,4};
+
+        for(int i = 1; i < numPlayers; ++i){
+            botPlayerIds = new int[]{i};
+            System.out.println(botPlayerIds);
+        }
+
+    }
+
+    public STPlayer getBotPlayer() {
+
+        // todo WHY DOESNT IT LOOP??
+
+
+        for(int player : botPlayerIds){
+            return players[player];
+        }
+        return null;
+    }
+
 
     public void playGame() {
         boolean gameIsActive = true;
@@ -45,7 +70,7 @@ public class STGame {
                 }
                 else{
                     System.out.println("This is a bot");
-//                    showBotTurn;
+                    showBotTurn();
                 }
 
             }
@@ -56,6 +81,12 @@ public class STGame {
 
     private void showPlayerTurn() {
         System.out.println(this.getHumanPlayer());
+
+
+    }
+
+    private void showBotTurn() {
+        System.out.println(this.getBotPlayer());
 
 
     }

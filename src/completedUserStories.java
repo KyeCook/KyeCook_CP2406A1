@@ -46,9 +46,16 @@ public class completedUserStories {
         game.selectDealer();
         game.dealCards();
         game.selectHumanPlayer();
+        game.selectBotPlayers();
 
         STPlayer humanPlayer = game.getHumanPlayer();
+        STPlayer botPlayer = game.getBotPlayer();
+
+
         showPlayer(humanPlayer);
+
+        // below is show for testing
+        showPlayer(botPlayer);
 //        dealCards();
 
         return game;
