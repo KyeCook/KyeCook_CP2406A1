@@ -11,11 +11,11 @@ public class STGame {
     private STDeck deck;
     private int humanPlayerId;
 
-    private int[] botPlayerIds;
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
         deck = new STDeck();
+        botPlayerIds = new int[4];
     }
 
     public void selectDealer() {
@@ -35,15 +35,13 @@ public class STGame {
 //        botPlayerIds = new int[]{1,2,3,4};
 
         for(int i = 1; i < numPlayers; ++i){
-            botPlayerIds = new int[]{i};
-            System.out.println(botPlayerIds);
+            botPlayerIds[i] = i;
+            System.out.println(botPlayerIds[i]);
         }
 
     }
 
     public STPlayer getBotPlayer() {
-
-        // todo WHY DOESNT IT LOOP??
 
 
         for(int player : botPlayerIds){
@@ -96,9 +94,7 @@ public class STGame {
             if(selectedOption == 9){
                 System.out.println("Turn Passed");
                 //todo how to only add 1 to user deck rather than replacing
-                ArrayList<STCard>  cards = deck.dealCards(1);
-                players[humanPlayerId].setCards(cards);
-
+                deck.addToDeck(1);
 
             }
             else {
@@ -118,7 +114,6 @@ public class STGame {
     private void showBotTurn() {
         System.out.println(this.getBotPlayer());
         //todo make an extension class to STPlayer for bot, each bot can then reference to it via getters and setters
-
 
     }
 
