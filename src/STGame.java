@@ -80,13 +80,44 @@ public class STGame {
     }
 
     private void showPlayerTurn() {
+        int selectedOption = 0;
+
         System.out.println(this.getHumanPlayer());
 
+        Scanner userSelection = new Scanner(System.in);
+//        selectedOption = userSelection.nextInt();
+
+        try {
+            while(selectedOption<1 || selectedOption >9){
+                System.out.println("Choose a card to play [1-8] or pass [9] :");
+                selectedOption = userSelection.nextInt();
+            }
+
+            if(selectedOption == 9){
+                System.out.println("Turn Passed");
+                //todo how to only add 1 to user deck rather than replacing
+                ArrayList<STCard>  cards = deck.dealCards(1);
+                players[humanPlayerId].setCards(cards);
+
+
+            }
+            else {
+                System.out.println("Card is played");
+            }
+
+        } catch(InputMismatchException e) {
+            System.out.println("Incorrect input type. Please make sure valid integer is inputted");
+            showPlayerTurn();
+        }
+
+        // for testing
+        System.out.println(this.getHumanPlayer());
 
     }
 
     private void showBotTurn() {
         System.out.println(this.getBotPlayer());
+        //todo make an extension class to STPlayer for bot, each bot can then reference to it via getters and setters
 
 
     }
@@ -94,7 +125,7 @@ public class STGame {
     public void dealCards() {
         players = new STPlayer[numPlayers];
         for (int i = 0; i <numPlayers; ++i){
-            players[i] = new STPlayer("Player" + i);
+            players[i] = new STPlayer("Player " + i);
 
         }
 
