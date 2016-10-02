@@ -73,6 +73,10 @@ public class STGame {
                 }
 
             }
+
+//            players[humanPlayerId].playerDeck().size(); <-- use while loop to keep game active while player deck size
+//            is greater than 0
+
             gameIsActive = false;
 
         }
