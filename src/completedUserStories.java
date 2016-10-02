@@ -113,6 +113,6 @@ public class completedUserStories {
     }
 
     private static void showPlayer(STPlayer humanPlayer){
-        System.out.println("Human Players" + humanPlayer);
+        System.out.println("\nHello you are player number: " + humanPlayer + "\n");
     }
 }

@@ -16,6 +16,6 @@ public class STPlayer {
     }
 
     public String toString(){
-        return "playerId=" + playerId + "\n Cards=" + cards;
+        return playerId + "\n\tYour Deck is: " + cards;
     }
 }

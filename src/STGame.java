@@ -41,7 +41,7 @@ public class STGame {
                 //todo check human player (polymorphism)
                 if(indexPlayer == humanPlayerId){
                     System.out.println("THIS IS A HUMAN");
-//                    showPlayerTurn();
+                    showPlayerTurn();
                 }
                 else{
                     System.out.println("This is a bot");
@@ -52,6 +52,12 @@ public class STGame {
             gameIsActive = false;
 
         }
+    }
+
+    private void showPlayerTurn() {
+        System.out.println(this.getHumanPlayer());
+
+
     }
 
     public void dealCards() {
