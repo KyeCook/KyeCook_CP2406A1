@@ -10,12 +10,13 @@ public class STGame {
     private STPlayer[] players;
     private STDeck deck;
     private int humanPlayerId;
+    private int[] botPlayerIds = {1,2,3,4};
 
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
         deck = new STDeck();
-        botPlayerIds = new int[4];
+
     }
 
     public void selectDealer() {
@@ -79,6 +80,7 @@ public class STGame {
 
     private void showPlayerTurn() {
         int selectedOption = 0;
+        int playerCardAmount = players[humanPlayerId].playerDeck().size();
 
         System.out.println(this.getHumanPlayer());
 
@@ -87,18 +89,24 @@ public class STGame {
 
         try {
             while(selectedOption<1 || selectedOption >9){
-                System.out.println("Choose a card to play [1-8] or pass [9] :");
+                System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
                 selectedOption = userSelection.nextInt();
             }
 
-            if(selectedOption == 9){
+            if(selectedOption == 0){
                 System.out.println("Turn Passed");
-                //todo how to only add 1 to user deck rather than replacing
-                deck.addToDeck(1);
+
+                ArrayList<STCard>  drawnCard = deck.dealCards(1);
+                players[humanPlayerId].playerDeck().addAll(drawnCard);
+
+                System.out.println(players[humanPlayerId].playerDeck());
 
             }
             else {
                 System.out.println("Card is played");
+
+                System.out.println(players[humanPlayerId].playerDeck().get(selectedOption - 1));
+
             }
 
         } catch(InputMismatchException e) {

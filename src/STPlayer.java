@@ -18,4 +18,8 @@ public class STPlayer {
     public String toString(){
         return playerId + "\n\tYour Deck is: " + cards;
     }
+
+    public ArrayList<STCard> playerDeck(){
+        return cards;
+    }
 }
