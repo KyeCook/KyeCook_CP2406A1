@@ -10,9 +10,15 @@ public class cards {
     public static void main(String[]args){
 
         Dictionary dict = new Hashtable();
-            dict.put("card_id", "1");
+
+        Object[] card1 = {
+                dict.put("card_id", "1"),
+                dict.put("card_name", "rock")
+
+        };
 
         System.out.println(dict.get("card_id"));
+        System.out.println(card1);
 
 
 
