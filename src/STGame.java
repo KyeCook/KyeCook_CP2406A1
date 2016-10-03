@@ -68,35 +68,6 @@ public class STGame {
         return players[botPlayerId4];
     }
 
-//    public void selectBotPlayers(){
-////        botPlayerIds = new int[]{1,2,3,4};
-//
-//        for(int i = 1; i < numPlayers; ++i){
-//            botPlayerIds[i] = i;
-//            System.out.println(botPlayerIds[i]);
-//        }
-//
-//    }
-
-//    public int[] getBotPlayer() {
-//
-//        return botPlayerIds;
-
-//        int n = 0;
-//
-//        for(int i = 1; i < numPlayers; ++i){
-//            botPlayerIds[i] = i;
-//            System.out.println(botPlayerIds[i]);
-//
-//            n = botPlayerIds[i];
-//        }
-//        return players[n];
-//        for(int player : botPlayerIds){
-//            return players[player];
-//        }
-//        return null;
-//    }
-
 
     public void playGame() {
         boolean gameIsActive = true;
@@ -111,18 +82,25 @@ public class STGame {
                     showPlayerTurn();
                 }
                 else{
-                    System.out.println("This is a bot");
-                    showBotTurn(botPlayerId2);
+
+                    if(players.length == 2){
+                        showBotTurn(botPlayerId1);
+                    }
+                    else if(players.length == 3){
+                        showBotTurn(botPlayerId1);
+                        showBotTurn(botPlayerId2);
+                    }
+
+
+//                    System.out.println("This is a bot");
+//                    showBotTurn(botPlayerId2);
 
                 }
-
+                if(players[indexPlayer].playerDeck().size() == 0){
+                    System.out.println("Player : " + indexPlayer + " has Won SuperTrumps!");
+                    gameIsActive = false;
+                }
             }
-
-//            players[humanPlayerId].playerDeck().size(); <-- use while loop to keep game active while player deck size
-//            is greater than 0
-
-            gameIsActive = false;
-
         }
     }
 
@@ -171,8 +149,9 @@ public class STGame {
     }
 
     private void showBotTurn(int botPlayerId) {
+        System.out.println("This is bot no :" + botPlayerId);
 
-        System.out.println(botIds[botPlayerId]);
+//        System.out.println(botIds[botPlayerId]);
 
 //        System.out.println(this.getBotPlayer1());
 //        System.out.println(botPlayerId);

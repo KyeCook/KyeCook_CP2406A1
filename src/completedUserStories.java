@@ -48,6 +48,8 @@ public class completedUserStories {
         game.selectHumanPlayer();
 
         STPlayer humanPlayer = game.getHumanPlayer();
+        showPlayer(humanPlayer);
+
 
         if(numPlayers == 2){
             game.selectBotPlayer1();
@@ -117,7 +119,6 @@ public class completedUserStories {
 //            System.out.println("BOT ID : " + game.getBotPlayer()[i]);
 //        }
 
-        showPlayer(humanPlayer);
 
         // below is show for testing
 //        showPlayer(botPlayer1);
@@ -130,38 +131,39 @@ public class completedUserStories {
 
     }
     private static int getNumPlayers() {
-
         int numberOfPlayers = 0;
-
         Scanner noPlayers = new Scanner(System.in);
 
-        try {
-            System.out.println("Please enter in desired number of players (2-5)");
-            numberOfPlayers = noPlayers.nextInt();
+        while(numberOfPlayers<2 || numberOfPlayers >5){
 
-            while(numberOfPlayers<2 || numberOfPlayers >5){
+            try {
                 System.out.println("Please enter in desired number of players (2-5)");
                 numberOfPlayers = noPlayers.nextInt();
+
+            } catch(InputMismatchException e) {
+                System.out.println("Incorrect input type. Please make sure valid integer is inputted");
+                noPlayers.nextLine();
             }
-        } catch(InputMismatchException e) {
-            System.out.println("Incorrect input type. Please make sure valid integer is inputted");
-            getNumPlayers();
+
         }
 
         return numberOfPlayers;
     }
     private static void getUserMenuChoice() {
-        int userInput; //= 0;
+        int userInput = 0;
 
         Scanner userIn = new Scanner(System.in);
 
-        try {
-            System.out.println("\nPlease Enter Valid Menu Choice:");
-            userInput = userIn.nextInt();
 
             while(userInput < 1 || userInput > 2){
-                System.out.println("\nPlease Enter Valid Menu Choice:");
-                userInput = userIn.nextInt();
+                try {
+                    System.out.println("\nPlease Enter Valid Menu Choice:");
+                    userInput = userIn.nextInt();
+
+                } catch (InputMismatchException e) {
+                    System.out.println("Incorrect input type. Please make sure valid integer is inputted");
+                    userIn.nextLine();
+                }
             }
 
             if(userInput == 1){
@@ -173,12 +175,6 @@ public class completedUserStories {
                 completedUserStories endGame = new completedUserStories(MenuOption.END_GAME);
                 endGame.selectedMenuOption();
             }
-
-        } catch (InputMismatchException e) {
-            System.out.println("Incorrect input type. Please make sure valid integer is inputted");
-            getUserMenuChoice();
-        }
-
 
     }
 
