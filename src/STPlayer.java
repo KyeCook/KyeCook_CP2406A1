@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 /**
- * Created by ACfan on 29/09/2016.
+ * Created by Kye Cook on 29/09/2016.
+ */
+
+/*
+Sets up player class to allow player data to be stored in seperate class allowing for object orientated coding
  */
 public class STPlayer {
     private ArrayList<STCard> cards;

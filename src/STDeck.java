@@ -8,7 +8,9 @@ public class STDeck {
     private static final int NUM_CARDS_INITIALLY = 54;
     private ArrayList<STCard> cards;
 
-    //TODO List of all cards,
+/*
+Sets up Deck class to allow player data to be stored in seperate class allowing for object orientated coding
+ */
 
     public STDeck() {
        cards = new ArrayList<STCard>();
