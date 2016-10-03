@@ -1,4 +1,6 @@
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by Kye Cook on 29/09/2016.
@@ -18,10 +20,6 @@ public class STGame {
     private int botPlayerId2;
     private int botPlayerId3;
     private int botPlayerId4;
-
-
-    //todo Make into an ArrayList
-    private int[] botIds = {botPlayerId1,botPlayerId2,botPlayerId3,botPlayerId4};
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
@@ -71,34 +69,71 @@ public class STGame {
 
     public void playGame() {
         boolean gameIsActive = true;
+        int convertObjectToInteger;
+
+        List bots = new ArrayList(4);
+
+        bots.add(botPlayerId1);
+        bots.add(botPlayerId2);
+        bots.add(botPlayerId3);
+        bots.add(botPlayerId4);
+
+        System.out.println(bots.get(1));
+
+//        int test = Integer.parseInt(bots.get(1).toString());
+//        System.out.println(test);
 
         while (gameIsActive){
             //todo setup players in correct order
 
             for(int indexPlayer = 0; indexPlayer < players.length; indexPlayer ++) {
                 //todo check human player (polymorphism)
-                if(indexPlayer == humanPlayerId){
-                    System.out.println("THIS IS A HUMAN");
+                if(players[indexPlayer].playerDeck().size() == 0){
+                    System.out.println("Player : " + indexPlayer + " has Won SuperTrumps!");
+                    gameIsActive = false;
+                    break;
+                }
+
+                else if(indexPlayer == humanPlayerId){
+                    System.out.println("----- Your Turn -----");
                     showPlayerTurn();
                 }
-                else{
 
-                    if(players.length == 2){
-                        showBotTurn(botPlayerId1);
-                    }
-                    else if(players.length == 3){
-                        showBotTurn(botPlayerId1);
-                        showBotTurn(botPlayerId2);
-                    }
+                else{
+                    convertObjectToInteger = Integer.parseInt(bots.get(indexPlayer - 1).toString());
+
+                    System.out.println("----- Bots Turn -----");
+                    System.out.println("TEST" + indexPlayer);
+                    System.out.println("TEST" + convertObjectToInteger);
+
+                    showBotTurn(convertObjectToInteger);
+
+//                    showBotTurn(bots[indexPlayer]);
+
+//                    if(players.length == 2){
+//                        showBotTurn(botPlayerId1);
+//                    }
+//                    else if(players.length == 3){
+//                        showBotTurn(botPlayerId1);
+//                        showBotTurn(botPlayerId2);
+//                    }
+//                    else if(players.length == 4){
+//                        showBotTurn(botPlayerId1);
+//                        showBotTurn(botPlayerId2);
+//                        showBotTurn(botPlayerId3);
+//
+//                    }
+//                    else if(players.length == 5){
+//                        showBotTurn(botPlayerId1);
+//                        showBotTurn(botPlayerId2);
+//                        showBotTurn(botPlayerId3);
+//                        showBotTurn(botPlayerId4);
+//                    }
 
 
 //                    System.out.println("This is a bot");
 //                    showBotTurn(botPlayerId2);
 
-                }
-                if(players[indexPlayer].playerDeck().size() == 0){
-                    System.out.println("Player : " + indexPlayer + " has Won SuperTrumps!");
-                    gameIsActive = false;
                 }
             }
         }

@@ -98,35 +98,6 @@ public class completedUserStories {
             showPlayer(botPlayer4);
         }
 
-//        game.selectBotPlayer1();
-//        game.selectBotPlayer2();
-//        game.selectBotPlayer3();
-//        game.selectBotPlayer4();
-
-
-//        STPlayer botPlayer1 = game.getBotPlayer1();
-//        STPlayer botPlayer2 = game.getBotPlayer2();
-//        STPlayer botPlayer3 = game.getBotPlayer3();
-//        STPlayer botPlayer4 = game.getBotPlayer4();
-
-
-//        for(int i = 0; i < numPlayers; i++){
-//            System.out.println("BOT ID : " + game.getBotPlayer());
-//        }
-
-//        for(int i = 1; i < numPlayers; ++i){
-//            game.getBotPlayer()[i] = i;
-//            System.out.println("BOT ID : " + game.getBotPlayer()[i]);
-//        }
-
-
-        // below is show for testing
-//        showPlayer(botPlayer1);
-//        showPlayer(botPlayer2);
-//        showPlayer(botPlayer3);
-//        showPlayer(botPlayer4);
-//        dealCards();
-
         return game;
 
     }
