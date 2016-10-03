@@ -8,7 +8,11 @@ public class STCard {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String toString() {
-        return "id=" + id;
+        return "Card ID : " + id;
     }
 }

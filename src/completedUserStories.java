@@ -56,7 +56,7 @@ public class completedUserStories {
 
             STPlayer botPlayer1 = game.getBotPlayer1();
 
-            showPlayer(botPlayer1);
+//            showPlayer(botPlayer1);
         }
         else if(numPlayers == 3){
             game.selectBotPlayer1();
@@ -65,8 +65,8 @@ public class completedUserStories {
             STPlayer botPlayer1 = game.getBotPlayer1();
             STPlayer botPlayer2 = game.getBotPlayer2();
 
-            showPlayer(botPlayer1);
-            showPlayer(botPlayer2);
+//            showPlayer(botPlayer1);
+//            showPlayer(botPlayer2);
         }
         else if(numPlayers == 4){
             game.selectBotPlayer1();
@@ -77,9 +77,9 @@ public class completedUserStories {
             STPlayer botPlayer2 = game.getBotPlayer2();
             STPlayer botPlayer3 = game.getBotPlayer3();
 
-            showPlayer(botPlayer1);
-            showPlayer(botPlayer2);
-            showPlayer(botPlayer3);
+//            showPlayer(botPlayer1);
+//            showPlayer(botPlayer2);
+//            showPlayer(botPlayer3);
         }
         else if(numPlayers == 5){
             game.selectBotPlayer1();
@@ -92,10 +92,10 @@ public class completedUserStories {
             STPlayer botPlayer3 = game.getBotPlayer3();
             STPlayer botPlayer4 = game.getBotPlayer4();
 
-            showPlayer(botPlayer1);
-            showPlayer(botPlayer2);
-            showPlayer(botPlayer3);
-            showPlayer(botPlayer4);
+//            showPlayer(botPlayer1);
+//            showPlayer(botPlayer2);
+//            showPlayer(botPlayer3);
+//            showPlayer(botPlayer4);
         }
 
         return game;
@@ -159,6 +159,6 @@ public class completedUserStories {
     }
 
     private static void showPlayer(STPlayer humanPlayer){
-        System.out.println("\nHello you are player number: " + humanPlayer + "\n");
+        System.out.println("\nHello you are player number: " + humanPlayer.getPlayerId() + "\n");
     }
 }

@@ -15,11 +15,14 @@ public class STGame {
     private STPlayer[] players;
     private STDeck deck;
     private int humanPlayerId;
+    private int cardInPlay = 0;
 
     private int botPlayerId1;
     private int botPlayerId2;
     private int botPlayerId3;
     private int botPlayerId4;
+
+    private List bots = new ArrayList(4);
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
@@ -71,68 +74,41 @@ public class STGame {
         boolean gameIsActive = true;
         int convertObjectToInteger;
 
-        List bots = new ArrayList(4);
+
 
         bots.add(botPlayerId1);
         bots.add(botPlayerId2);
         bots.add(botPlayerId3);
         bots.add(botPlayerId4);
 
-        System.out.println(bots.get(1));
-
-//        int test = Integer.parseInt(bots.get(1).toString());
-//        System.out.println(test);
 
         while (gameIsActive){
-            //todo setup players in correct order
 
             for(int indexPlayer = 0; indexPlayer < players.length; indexPlayer ++) {
-                //todo check human player (polymorphism)
+                /*
+                This sets the winning condition of the game
+                 */
                 if(players[indexPlayer].playerDeck().size() == 0){
                     System.out.println("Player : " + indexPlayer + " has Won SuperTrumps!");
                     gameIsActive = false;
                     break;
                 }
-
+                /*
+                This starts the players turn
+                 */
                 else if(indexPlayer == humanPlayerId){
-                    System.out.println("----- Your Turn -----");
+                    System.out.println("----- Your Turn -----\n");
                     showPlayerTurn();
                 }
+                /*
+                This ensures that each bot has their own turn and is dependant on the amount of bots present within game
+                 */
 
                 else{
                     convertObjectToInteger = Integer.parseInt(bots.get(indexPlayer - 1).toString());
 
-                    System.out.println("----- Bots Turn -----");
-                    System.out.println("TEST" + indexPlayer);
-                    System.out.println("TEST" + convertObjectToInteger);
-
+                    System.out.println("----- Bots Turn -----\n");
                     showBotTurn(convertObjectToInteger);
-
-//                    showBotTurn(bots[indexPlayer]);
-
-//                    if(players.length == 2){
-//                        showBotTurn(botPlayerId1);
-//                    }
-//                    else if(players.length == 3){
-//                        showBotTurn(botPlayerId1);
-//                        showBotTurn(botPlayerId2);
-//                    }
-//                    else if(players.length == 4){
-//                        showBotTurn(botPlayerId1);
-//                        showBotTurn(botPlayerId2);
-//                        showBotTurn(botPlayerId3);
-//
-//                    }
-//                    else if(players.length == 5){
-//                        showBotTurn(botPlayerId1);
-//                        showBotTurn(botPlayerId2);
-//                        showBotTurn(botPlayerId3);
-//                        showBotTurn(botPlayerId4);
-//                    }
-
-
-//                    System.out.println("This is a bot");
-//                    showBotTurn(botPlayerId2);
 
                 }
             }
@@ -146,10 +122,9 @@ public class STGame {
         System.out.println(this.getHumanPlayer());
 
         Scanner userSelection = new Scanner(System.in);
-//        selectedOption = userSelection.nextInt();
 
         try {
-            System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
+            System.out.println("\nChoose a card to play [1-" + playerCardAmount +"] or pass [0] :");
             selectedOption = userSelection.nextInt();
 
             while(selectedOption < 0 || selectedOption > playerCardAmount){
@@ -166,8 +141,12 @@ public class STGame {
 
             }
             else {
-                System.out.println(players[humanPlayerId].playerDeck().get(selectedOption - 1) + " Card is played");
+                System.out.println(players[humanPlayerId].playerDeck().get(selectedOption - 1) + "  is played");
+
+                cardInPlay = players[humanPlayerId].playerDeck().get(selectedOption - 1).getId();
+
                 players[humanPlayerId].playerDeck().remove(selectedOption - 1);
+
 
                 System.out.println(players[humanPlayerId].playerDeck());
 
@@ -178,22 +157,23 @@ public class STGame {
             showPlayerTurn();
         }
 
-        // for testing
-        System.out.println(this.getHumanPlayer());
+        System.out.println("\nCard to Beat :" + cardInPlay + '\n');
+
 
     }
 
     private void showBotTurn(int botPlayerId) {
-        System.out.println("This is bot no :" + botPlayerId);
-
-//        System.out.println(botIds[botPlayerId]);
-
-//        System.out.println(this.getBotPlayer1());
-//        System.out.println(botPlayerId);
+        System.out.println("This is bot no :" + botPlayerId + '\n');
+        System.out.println(players[botPlayerId].playerDeck());
+        System.out.println('\n');
 
 
+        for(STCard card : players[botPlayerId].playerDeck()){
+//            System.out.println(card + "\n");
+//            System.out.println(card.getId());
+        }
 
-        //todo make an extension class to STPlayer for bot, each bot can then reference to it via getters and setters
+        System.out.println("\nCard to Beat :" + cardInPlay + '\n');
 
     }
 
@@ -207,6 +187,7 @@ public class STGame {
         for(STPlayer player : players){
             ArrayList<STCard>  cards = deck.dealCards(NUM_CARDS_TO_DEAL);
             player.setCards(cards);
+
         }
     }
 }

@@ -22,4 +22,8 @@ public class STPlayer {
     public ArrayList<STCard> playerDeck(){
         return cards;
     }
+
+    public String getPlayerId() {
+        return playerId;
+    }
 }
