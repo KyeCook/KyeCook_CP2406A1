@@ -13,8 +13,15 @@ public class STGame {
     private STPlayer[] players;
     private STDeck deck;
     private int humanPlayerId;
-    private int[] botPlayerIds = {1,2,3,4,5};
 
+    private int botPlayerId1;
+    private int botPlayerId2;
+    private int botPlayerId3;
+    private int botPlayerId4;
+
+
+    //todo Make into an ArrayList
+    private int[] botIds = {botPlayerId1,botPlayerId2,botPlayerId3,botPlayerId4};
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
@@ -35,24 +42,60 @@ public class STGame {
     }
 
 
-    public void selectBotPlayers(){
-//        botPlayerIds = new int[]{1,2,3,4};
-
-        for(int i = 1; i < numPlayers; ++i){
-            botPlayerIds[i] = i - 1;
-            System.out.println(botPlayerIds[i]);
-        }
-
+    public void selectBotPlayer1(){
+        this.botPlayerId1 = 1;
+    }
+    public void selectBotPlayer2(){
+        this.botPlayerId2 = 2;
+    }
+    public void selectBotPlayer3(){
+        this.botPlayerId3 = 3;
+    }
+    public void selectBotPlayer4(){
+        this.botPlayerId4 = 4;
     }
 
-    public STPlayer getBotPlayer() {
-
-
-        for(int player : botPlayerIds){
-            return players[player];
-        }
-        return null;
+    public STPlayer getBotPlayer1(){
+        return players[botPlayerId1];
     }
+    public STPlayer getBotPlayer2(){
+        return players[botPlayerId2];
+    }
+    public STPlayer getBotPlayer3(){
+        return players[botPlayerId3];
+    }
+    public STPlayer getBotPlayer4(){
+        return players[botPlayerId4];
+    }
+
+//    public void selectBotPlayers(){
+////        botPlayerIds = new int[]{1,2,3,4};
+//
+//        for(int i = 1; i < numPlayers; ++i){
+//            botPlayerIds[i] = i;
+//            System.out.println(botPlayerIds[i]);
+//        }
+//
+//    }
+
+//    public int[] getBotPlayer() {
+//
+//        return botPlayerIds;
+
+//        int n = 0;
+//
+//        for(int i = 1; i < numPlayers; ++i){
+//            botPlayerIds[i] = i;
+//            System.out.println(botPlayerIds[i]);
+//
+//            n = botPlayerIds[i];
+//        }
+//        return players[n];
+//        for(int player : botPlayerIds){
+//            return players[player];
+//        }
+//        return null;
+//    }
 
 
     public void playGame() {
@@ -69,7 +112,8 @@ public class STGame {
                 }
                 else{
                     System.out.println("This is a bot");
-                    showBotTurn();
+                    showBotTurn(botPlayerId2);
+
                 }
 
             }
@@ -90,9 +134,11 @@ public class STGame {
 
         Scanner userSelection = new Scanner(System.in);
 //        selectedOption = userSelection.nextInt();
-        System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
-        selectedOption = userSelection.nextInt();
+
         try {
+            System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
+            selectedOption = userSelection.nextInt();
+
             while(selectedOption < 0 || selectedOption > playerCardAmount){
                 System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
                 selectedOption = userSelection.nextInt();
@@ -124,8 +170,15 @@ public class STGame {
 
     }
 
-    private void showBotTurn() {
-        System.out.println(this.getBotPlayer());
+    private void showBotTurn(int botPlayerId) {
+
+        System.out.println(botIds[botPlayerId]);
+
+//        System.out.println(this.getBotPlayer1());
+//        System.out.println(botPlayerId);
+
+
+
         //todo make an extension class to STPlayer for bot, each bot can then reference to it via getters and setters
 
     }

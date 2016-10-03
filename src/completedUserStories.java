@@ -46,15 +46,84 @@ public class completedUserStories {
         game.selectDealer();
         game.dealCards();
         game.selectHumanPlayer();
-        game.selectBotPlayers();
 
         STPlayer humanPlayer = game.getHumanPlayer();
-        STPlayer botPlayer = game.getBotPlayer();
+
+        if(numPlayers == 2){
+            game.selectBotPlayer1();
+
+            STPlayer botPlayer1 = game.getBotPlayer1();
+
+            showPlayer(botPlayer1);
+        }
+        else if(numPlayers == 3){
+            game.selectBotPlayer1();
+            game.selectBotPlayer2();
+
+            STPlayer botPlayer1 = game.getBotPlayer1();
+            STPlayer botPlayer2 = game.getBotPlayer2();
+
+            showPlayer(botPlayer1);
+            showPlayer(botPlayer2);
+        }
+        else if(numPlayers == 4){
+            game.selectBotPlayer1();
+            game.selectBotPlayer2();
+            game.selectBotPlayer3();
+
+            STPlayer botPlayer1 = game.getBotPlayer1();
+            STPlayer botPlayer2 = game.getBotPlayer2();
+            STPlayer botPlayer3 = game.getBotPlayer3();
+
+            showPlayer(botPlayer1);
+            showPlayer(botPlayer2);
+            showPlayer(botPlayer3);
+        }
+        else if(numPlayers == 5){
+            game.selectBotPlayer1();
+            game.selectBotPlayer2();
+            game.selectBotPlayer3();
+            game.selectBotPlayer4();
+
+            STPlayer botPlayer1 = game.getBotPlayer1();
+            STPlayer botPlayer2 = game.getBotPlayer2();
+            STPlayer botPlayer3 = game.getBotPlayer3();
+            STPlayer botPlayer4 = game.getBotPlayer4();
+
+            showPlayer(botPlayer1);
+            showPlayer(botPlayer2);
+            showPlayer(botPlayer3);
+            showPlayer(botPlayer4);
+        }
+
+//        game.selectBotPlayer1();
+//        game.selectBotPlayer2();
+//        game.selectBotPlayer3();
+//        game.selectBotPlayer4();
+
+
+//        STPlayer botPlayer1 = game.getBotPlayer1();
+//        STPlayer botPlayer2 = game.getBotPlayer2();
+//        STPlayer botPlayer3 = game.getBotPlayer3();
+//        STPlayer botPlayer4 = game.getBotPlayer4();
+
+
+//        for(int i = 0; i < numPlayers; i++){
+//            System.out.println("BOT ID : " + game.getBotPlayer());
+//        }
+
+//        for(int i = 1; i < numPlayers; ++i){
+//            game.getBotPlayer()[i] = i;
+//            System.out.println("BOT ID : " + game.getBotPlayer()[i]);
+//        }
 
         showPlayer(humanPlayer);
 
         // below is show for testing
-        showPlayer(botPlayer);
+//        showPlayer(botPlayer1);
+//        showPlayer(botPlayer2);
+//        showPlayer(botPlayer3);
+//        showPlayer(botPlayer4);
 //        dealCards();
 
         return game;
@@ -67,11 +136,13 @@ public class completedUserStories {
         Scanner noPlayers = new Scanner(System.in);
 
         try {
+            System.out.println("Please enter in desired number of players (2-5)");
+            numberOfPlayers = noPlayers.nextInt();
+
             while(numberOfPlayers<2 || numberOfPlayers >5){
                 System.out.println("Please enter in desired number of players (2-5)");
                 numberOfPlayers = noPlayers.nextInt();
             }
-
         } catch(InputMismatchException e) {
             System.out.println("Incorrect input type. Please make sure valid integer is inputted");
             getNumPlayers();
@@ -80,14 +151,16 @@ public class completedUserStories {
         return numberOfPlayers;
     }
     private static void getUserMenuChoice() {
-        int userInput = 0;
+        int userInput; //= 0;
 
         Scanner userIn = new Scanner(System.in);
 
         try {
+            System.out.println("\nPlease Enter Valid Menu Choice:");
+            userInput = userIn.nextInt();
 
             while(userInput < 1 || userInput > 2){
-                System.out.println("\nPlease Enter Valid Menu Choice:\n");
+                System.out.println("\nPlease Enter Valid Menu Choice:");
                 userInput = userIn.nextInt();
             }
 
