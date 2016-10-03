@@ -1,5 +1,5 @@
 /**
- * Created by ACfan on 29/09/2016.
+ * Created by Kye Cook on 29/09/2016.
  */
 public class STCard {
     private int id;

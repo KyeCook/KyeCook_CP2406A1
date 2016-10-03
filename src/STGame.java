@@ -1,7 +1,10 @@
 import java.util.*;
 
 /**
- * Created by ACfan on 29/09/2016.
+ * Created by Kye Cook on 29/09/2016.
+ *
+ *
+ *
  */
 public class STGame {
     private static final int NUM_CARDS_TO_DEAL = 8;

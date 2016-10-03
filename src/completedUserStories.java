@@ -51,7 +51,6 @@ public class completedUserStories {
         STPlayer humanPlayer = game.getHumanPlayer();
         STPlayer botPlayer = game.getBotPlayer();
 
-
         showPlayer(humanPlayer);
 
         // below is show for testing
