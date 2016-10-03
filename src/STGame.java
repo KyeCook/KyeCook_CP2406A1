@@ -13,7 +13,7 @@ public class STGame {
     private STPlayer[] players;
     private STDeck deck;
     private int humanPlayerId;
-    private int[] botPlayerIds = {1,2,3,4};
+    private int[] botPlayerIds = {1,2,3,4,5};
 
 
     public STGame(int numPlayers) {
@@ -39,7 +39,7 @@ public class STGame {
 //        botPlayerIds = new int[]{1,2,3,4};
 
         for(int i = 1; i < numPlayers; ++i){
-            botPlayerIds[i] = i;
+            botPlayerIds[i] = i - 1;
             System.out.println(botPlayerIds[i]);
         }
 
@@ -57,9 +57,6 @@ public class STGame {
 
     public void playGame() {
         boolean gameIsActive = true;
-        //todo: index part of array or list? Should players be enumerated?
-        // below maybe the solution?
-        boolean humanTurn = false;
 
         while (gameIsActive){
             //todo setup players in correct order
@@ -86,23 +83,23 @@ public class STGame {
     }
 
     private void showPlayerTurn() {
-        int selectedOption = 0;
+        int selectedOption;
         int playerCardAmount = players[humanPlayerId].playerDeck().size();
 
         System.out.println(this.getHumanPlayer());
 
         Scanner userSelection = new Scanner(System.in);
 //        selectedOption = userSelection.nextInt();
-
+        System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
+        selectedOption = userSelection.nextInt();
         try {
-            while(selectedOption<1 || selectedOption >9){
+            while(selectedOption < 0 || selectedOption > playerCardAmount){
                 System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
                 selectedOption = userSelection.nextInt();
             }
 
             if(selectedOption == 0){
                 System.out.println("Turn Passed");
-
                 ArrayList<STCard>  drawnCard = deck.dealCards(1);
                 players[humanPlayerId].playerDeck().addAll(drawnCard);
 
