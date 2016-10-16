@@ -179,6 +179,13 @@ public class STGame {
                 System.out.println(players[humanPlayerId].playerDeck());
 
             }
+            /*
+            Error checks to make sure player can only play cards that are higher than current card in play.
+             */
+            else if(selectedOption < cardInPlay){
+                System.out.println("Choose a card to play [1-" + playerCardAmount +"] or pass [0] :");
+                userSelection.nextInt();
+            }
             else {
                 System.out.println(players[humanPlayerId].playerDeck().get(selectedOption - 1) + "  is played");
 
