@@ -40,7 +40,6 @@ public class KyeCook_Assign2_GUI extends JFrame implements ActionListener{
         Object source = e.getSource();
 
         if(source == newGameButton){
-            JOptionPane.showMessageDialog(null, "Game is starting");
             getNumPlayers();
         }
         else {
@@ -75,5 +74,7 @@ public class KyeCook_Assign2_GUI extends JFrame implements ActionListener{
     {
         KyeCook_Assign2_GUI frame = new KyeCook_Assign2_GUI();
     }
+
+
 
 }
