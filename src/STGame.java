@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import javax.swing.*;
 
 /**
  * Created by Kye Cook on 29/09/2016.
@@ -10,6 +11,9 @@ import java.util.List;
 Game class that features all code required for actual gameplay
  */
 public class STGame {
+
+    PlayerTurnGUI gui;
+
     /*
     Constant determines amount of cards dealt to each player
      */
@@ -17,6 +21,7 @@ public class STGame {
     /*
     Declaration of variables used within code
      */
+    public int playerCardAmount;
     private int numPlayers;
     private int dealerId;
     private STPlayer[] players;
@@ -41,6 +46,8 @@ public class STGame {
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
         deck = new STDeck();
+
+        gui = new PlayerTurnGUI(this);
     }
 
     /*
@@ -62,7 +69,7 @@ public class STGame {
 
 
     /*
-    Statements to allow the main function of program (KyeCook__Assign1__DOS) to select the ids
+    Statements to allow the main function of program (wearentfuckingusingthisagain.KyeCook__Assign1__DOS) to select the ids
      */
     public void selectBotPlayer1(){
         this.botPlayerId1 = 1;
@@ -134,7 +141,7 @@ public class STGame {
                 else{
                     convertObjectToInteger = Integer.parseInt(bots.get(indexPlayer - 1).toString());
 
-                    System.out.println("----- Bots Turn -----\n");
+//                    System.out.println("----- Bots Turn -----\n");
                     showBotTurn(convertObjectToInteger);
 
                 }
@@ -146,9 +153,13 @@ public class STGame {
     Players turn : Code that occurs when players turn is initiated. Allows player to see their current hand as well as
     play cards and or pass the round.
      */
-    private void showPlayerTurn() {
+    public void showPlayerTurn() {
         int selectedOption;
-        int playerCardAmount = players[humanPlayerId].playerDeck().size();
+        playerCardAmount = players[humanPlayerId].playerDeck().size();
+
+        gui.setVisible(true);
+        gui.requestFocus();
+        gui.repaint();
 
         System.out.println(this.getHumanPlayer());
 
@@ -215,12 +226,15 @@ public class STGame {
     private void showBotTurn(int botPlayerId) {
         List botCards = new ArrayList();
 
-        System.out.println("arraysize" + botCards.size());
+//        System.out.println("arraysize" + botCards.size());
 
+//        System.out.println("This is bot no :" + botPlayerId + '\n');
+        JOptionPane.showMessageDialog(null, "---------------- Bots Turn ----------------\n\n This is bot no :" +
+                botPlayerId + '\n' + '\n' );
 
-        System.out.println("This is bot no :" + botPlayerId + '\n');
-        System.out.println(players[botPlayerId].playerDeck());
-        System.out.println('\n');
+//        System.out.println(players[botPlayerId].playerDeck());
+//        System.out.println('\n');
+
 
         for(STCard card : players[botPlayerId].playerDeck()){
 
@@ -245,13 +259,14 @@ public class STGame {
         Sets Card to be played and removed by bot
          */
         players[botPlayerId].playerDeck().remove(botCards.size());
-        System.out.println("arraysize:" + botCards.size());
-        System.out.println("cardsindeck:" + botCards);
+//        System.out.println("arraysize:" + botCards.size());
+//        System.out.println("cardsindeck:" + botCards);
 
 
-        System.out.println(players[botPlayerId].playerDeck());
+//        System.out.println(players[botPlayerId].playerDeck());
 
-        System.out.println("\nCard to Beat :" + cardInPlay + '\n');
+//        System.out.println("\nCard to Beat :" + cardInPlay + '\n');
+        JOptionPane.showMessageDialog(null, "\nCard to Beat :" + cardInPlay + '\n');
     }
 
     /*
