@@ -1,7 +1,11 @@
+package GUIs;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.InputMismatchException;
+
 
 public class KyeCook_Assign2_GUI extends JFrame implements ActionListener{
 
@@ -37,11 +41,34 @@ public class KyeCook_Assign2_GUI extends JFrame implements ActionListener{
 
         if(source == newGameButton){
             JOptionPane.showMessageDialog(null, "Game is starting");
+            getNumPlayers();
         }
         else {
             System.exit(0);
         }
 
+    }
+
+    private static int getNumPlayers() {
+        int numberOfPlayers = 0;
+
+
+
+        while(numberOfPlayers<2 || numberOfPlayers >5){
+
+            try {
+                String input = JOptionPane.showInputDialog(null, "Enter in number of preferred players");
+                numberOfPlayers = Integer.parseInt(input);
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Incorrect input type. Please make sure valid integer is inputted");
+            }
+
+
+        }
+
+        JOptionPane.showMessageDialog(null, numberOfPlayers);
+        return numberOfPlayers;
     }
 
     public static void main(String[] args)
