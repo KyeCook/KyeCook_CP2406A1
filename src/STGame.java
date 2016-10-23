@@ -24,6 +24,7 @@ public class STGame {
     private int humanPlayerId;
     private int cardInPlay = 0;
 
+
     /*
     Declaration of bot ids and list of bot ids
      */
@@ -212,21 +213,24 @@ public class STGame {
     Bot players turn. Runs code bot will perform during its turn
      */
     private void showBotTurn(int botPlayerId) {
+        List botCards = new ArrayList();
+
+        System.out.println("arraysize" + botCards.size());
+
+
         System.out.println("This is bot no :" + botPlayerId + '\n');
         System.out.println(players[botPlayerId].playerDeck());
         System.out.println('\n');
 
-
-        List i = new ArrayList();
-
         for(STCard card : players[botPlayerId].playerDeck()){
 
             if(card.getId() > cardInPlay){
+
                 /*
-                Below code would be used to remove card played by bot, need to figure out how to get past
-                ConcurrentModificationException error
+                Creates a temporary arraylist too allow for both looping through and modification of Bot Cards.
+                 Eradicates concurrent modification errors.
                  */
-//                players[botPlayerId].playerDeck().remove(card);
+                botCards.add(card);
 
                 /*
                 Sets card to beat to card played by bot
@@ -237,13 +241,23 @@ public class STGame {
 
         }
 
-        System.out.println("\nCard to Beat :" + cardInPlay + '\n');
+        /*
+        Sets Card to be played and removed by bot
+         */
+        players[botPlayerId].playerDeck().remove(botCards.size());
+        System.out.println("arraysize:" + botCards.size());
+        System.out.println("cardsindeck:" + botCards);
+
+
         System.out.println(players[botPlayerId].playerDeck());
+
+        System.out.println("\nCard to Beat :" + cardInPlay + '\n');
     }
 
     /*
     Randomly 'shuffles' and 'deals' cards to players
      */
+
     public void dealCards() {
         /*
         Instantiates players arraylist
